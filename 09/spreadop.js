@@ -2,29 +2,45 @@ const  arr= [1,2,3] ;
 const badarray = [...arr ,5,6,7];
 console.log(badarray);
 
+const weekday = ['MON','TUE','WED','THU', 'FRI','SAT','SUN'];  //es6 ehnaced object literals
+
+const openinghours  = {
+
+    [weekday[0]] : {
+        open : '9:00',
+        close : '18:00'
+    },
+    TUE : {
+        open : '9:00',
+        close : '18:00'
+    },
+    [weekday[2]] : {
+        open : '9:00',
+        close : '18:00'
+    },
+    [weekday[5]] : {
+        open : "0: 00",
+        close : "24: 00"
+    }
+
+};
+
 const resturant = {
     name: ' zam zam hotel',
     location: 'kathmandu',
     categories  : ['italian', 'chinese', 'american'],
     startmenu : ['pizza', 'pasta', 'burger'],
     mainmenu : [ 'paneer', 'dosa', 'paneer roll'],
-    openinghours  : {
+    //openinghours : openinghours,
+    //es 6 enhanced object literal
 
-        MON : {
-            open : '9:00',
-            close : '18:00'
-        },
-        TUE : {
-            open : '9:00',
-            close : '18:00'
-        },
-        WED : {
-            open : '9:00',
-            close : '18:00'
-        }
+    openinghours,
 
-    },
-    order  : function(starterindex,mainindex){
+    //es6 new enhaced features
+    // order  : function(starterindex,mainindex){
+    //     return  [this.startmenu[starterindex], this.mainmenu[mainindex]]; or :-
+
+    order(starterindex,mainindex){
         return  [this.startmenu[starterindex], this.mainmenu[mainindex]];
 
     },
@@ -35,7 +51,7 @@ const resturant = {
     orderpasta  : function (ing1 , ing2 , ing3 ){
         console.log(`here  is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
     }   ,
-    orderpizza : function(mainingredients , ...restingrdients){
+    orderpizza(mainingredients , ...restingrdients){
         console.log(mainingredients);
         console.log(restingrdients);
     }
@@ -110,3 +126,61 @@ console.log(...str);
 // resturantcopy.name = 'zam zam11 hotel';
 // console.log(resturantcopy.name);
 // console.log(resturant.name);
+
+
+//loop arrays for of loop 
+
+const menu = [...resturant.startmenu, ...resturant.mainmenu];
+for (const item of menu ) console.log(item);
+for (const item of menu.entries()) {
+console.log(item)}; // EACH OF THE ITEMS ARE ARRAY NOW
+
+console.log([...menu.entries()]);
+for (const [ i , el ] of menu.entries()) {
+    console.log(` ${i +1}, ${el}`);
+};
+
+
+//optional chaning
+
+console.log(resturant.openinghours.sat?.open)
+console.log(resturant.openinghours?.sat?.close)
+
+for (const day of weekday){
+    const open = resturant.openinghours[day]?.open??'CLOSED';
+    console.log(` on ${day}, we open at ${open}`);
+}
+//methods
+console.log (resturant.order.orfdjfd?.(0,1)?? "method doesnot exist");
+
+const jon  = [{name : 'mak', class : "12++"}];
+console.log(jon[0]?.name ?? "user empty");
+console.log(jon[1]?.name ?? "user empty");
+
+const properties = Object.keys(openinghours);
+console.log(properties);
+
+let openstr = ` we open at ${properties.length} days  :`;
+
+for (const day of properties){
+    openstr += ` ${day}`;
+}
+console.log(openstr);
+
+//property value 
+const values = Object.values(openinghours);
+console.log(values);
+
+//entire object
+const entries= Object.entries(openinghours);
+// console.log(entries);
+
+    // for (  const x of entries){
+    //     console.log(x)
+    // }
+
+
+    //destructuring the array ,keys and   values......[day is key and open and closee is object]
+    for( const [day ,{open ,close} ] of entries){
+        console.log(`on ${day} we open at ${open} and close at ${close}`);
+    };
