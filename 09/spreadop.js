@@ -184,3 +184,15 @@ const entries= Object.entries(openinghours);
     for( const [day ,{open ,close} ] of entries){
         console.log(`on ${day} we open at ${open} and close at ${close}`);
     };
+
+// sets
+// can hold unique value 
+// duplicate value is not printed
+    const orderset = new Set([
+        'pizza',
+        'pasta',
+        'maggi',
+        'risatto',
+        'maaggi','pasta'
+    ]);
+    console.log(orderset);
