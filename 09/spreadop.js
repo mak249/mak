@@ -141,7 +141,7 @@ for (const [ i , el ] of menu.entries()) {
 };
 
 
-//optional chaning
+// -------------------🔗⛓️optional chaning⛓️🔗---------------------
 
 console.log(resturant.openinghours.sat?.open)
 console.log(resturant.openinghours?.sat?.close)
@@ -196,3 +196,68 @@ const entries= Object.entries(openinghours);
         'maaggi','pasta'
     ]);
     console.log(orderset);
+    console.log(new Set('jonas'));
+
+    console.log(orderset.size);
+    console.log(orderset.has('maggi'));
+    orderset.add('poha');
+    orderset.delete('pizza');
+    console.log(orderset);
+    // orderset.clear(); for deleting all elements
+    
+    for (const order of orderset ) console.log( order);
+
+    //example 
+
+    const staff = [ 'waiter', 'chef', 'waiter','manager','chef','waiter'];
+
+    const uniquestaff = [...new Set(staff)];
+    console.log(uniquestaff);
+
+    console.log(new Set('mohd arhan kaif').size);
+
+    // -----------------------🗺️ maps 🗺️--------------------------//
+
+    const rest  = new Map();
+    rest.set('name','kamptee');
+    rest.set(1, 'nagpur','italy')
+    
+    console.log(rest.set(2,'lisbon ','portugal'))
+    rest.set('categories',['italian', 'pizzarian','vegitarin','organic']).set('open', 23)
+    .set('close',23)
+    .set(true,'we are open')
+    .set(false,'we are closed');
+    console.log(rest.get('name'));
+    console.log(rest.get(true))
+    console.log(rest.get(1));
+
+
+    const time = 21; 
+    console.log (rest.get(time > rest.get('open') && time < rest.get('close')));
+
+    console.log(rest.has('categories'));
+    rest.delete(2);
+    console.log(rest);  
+    // rest.clear();
+    const arrr =[1,2];
+    rest.set(arrr, 'test')
+    rest.set([1,2],'test');
+    // rest.set(document.querySelector('h1'),'heading');
+    console.log(rest.size);
+    console.log(rest.get([1,2])); // will not map towards test so we need to create an arry for that 
+    console.log(rest.get(arrr));   // now it will map towards to its value
+
+    
+
+
+    const questions = new Map([
+        ['question','what is the best programming language in the world']
+    ,[1 , 'c'],
+    [2,' java'],
+    ['javasript',3],
+    ['correct',3],
+    [true,'correct'],
+    [false, 'try again']
+    ]);
+    console.log(questions);
+    
